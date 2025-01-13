@@ -118,6 +118,18 @@ class DoubleLinkedList:
         self.head = None
         self.tail = None
 
+    def remove_from_end(self):
+        if not self.head:
+            print("Linked list is empty")
+            return
+        if self.tail.prev:
+            self.tail.prev = self.tail
+            self.tail.next = None
+            return
+        self.head = None
+        self.tail = None
+
+
 
 my_linked_list = DoubleLinkedList()
 my_linked_list.insert_at_beginning(2)
