@@ -213,6 +213,17 @@ class DoubleLinkedList:
             return
         current_node.item = item
 
+    def search(self, item):
+        if not self.head:
+            print('linked list is empty')
+            return
+        current_node = self.head
+        while current_node:
+            if current_node.item == item:
+                return True
+            current_node = current_node.next
+        return False
+
 
 my_linked_list = DoubleLinkedList()
 my_linked_list.insert_at_beginning(2)
@@ -233,4 +244,5 @@ my_linked_list.insert_at_beginning(8)
 # my_linked_list.delete_specific_node(2)
 my_linked_list.update_at_specific_node(8, 5)
 my_linked_list.update_at_specific_index(9, 4)
+print(my_linked_list.search(1))
 my_linked_list.display_from_beginning()
