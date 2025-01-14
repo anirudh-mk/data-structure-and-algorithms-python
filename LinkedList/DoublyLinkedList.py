@@ -156,6 +156,31 @@ class DoubleLinkedList:
         else:
             self.tail = current_node
 
+    def delete_specific_node(self, node):
+        if not self.head:
+            print('Linked list is empty')
+            return
+        current_node = self.head
+        while current_node:
+            if current_node.item == node:
+                if current_node == self.head:
+                    if current_node.next:
+                        self.head = current_node.next
+                        self.head.prev = None
+                        return
+                    self.head = None
+                    self.tail = None
+                    return
+                if current_node == self.tail:
+                    self.tail = current_node.prev
+                    self.tail.next = None
+                    return
+                current_node.prev.next = current_node.next
+                current_node.next.prev = current_node.prev
+                return
+            current_node = current_node.next
+        print('Node not found')
+
 
 my_linked_list = DoubleLinkedList()
 my_linked_list.insert_at_beginning(2)
@@ -170,7 +195,8 @@ my_linked_list.insert_at_beginning(8)
 # my_linked_list.insert_after_a_node(34, 70)
 # my_linked_list.insert_before_a_node(70, 450)
 # my_linked_list.insert_at_specific_index(18, 7)
-my_linked_list.remove_at_a_specific_index(2)
+# my_linked_list.remove_at_a_specific_index(2)
 # my_linked_list.display_from_end()
 # my_linked_list.remove_from_beginning()
+my_linked_list.delete_specific_node(7)
 my_linked_list.display_from_beginning()
