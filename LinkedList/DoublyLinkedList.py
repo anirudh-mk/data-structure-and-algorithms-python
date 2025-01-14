@@ -193,6 +193,26 @@ class DoubleLinkedList:
             current_node = current_node.next
         print('Node not found')
 
+    def update_at_specific_index(self, item, index):
+        if not self.head:
+            print('linked list is empty')
+            return
+        if index < 0:
+            print("Index out of range")
+            return
+        if index == 0:
+            self.head.item = item
+            return
+        current_node = self.head
+        count = 0
+        while current_node and count < index - 1:
+            current_node = current_node.next
+            count += 1
+        if not current_node:
+            print('index out of range')
+            return
+        current_node.item = item
+
 
 my_linked_list = DoubleLinkedList()
 my_linked_list.insert_at_beginning(2)
@@ -212,4 +232,5 @@ my_linked_list.insert_at_beginning(8)
 # my_linked_list.remove_from_beginning()
 # my_linked_list.delete_specific_node(2)
 my_linked_list.update_at_specific_node(8, 5)
+my_linked_list.update_at_specific_index(9, 4)
 my_linked_list.display_from_beginning()
