@@ -129,11 +129,39 @@ class DoubleLinkedList:
         self.head = None
         self.tail = None
 
+    def remove_at_a_specific_index(self, index):
+        if not self.head:
+            print("Linked list is empty")
+            return
+        if index == 0:
+            if self.head.next:
+                self.head = self.head.next
+                self.head.prev = None
+                return
+            self.head = None
+            self.tail = None
+            return
+        current_node = self.head
+        count = 0
+        while current_node and count < index - 1:
+            current_node = current_node.next
+            count += 1
+        if not current_node:
+            print('Index out of range')
+            return
+        print(current_node.item)
+        current_node.next = current_node.next.next
+        if current_node.next:
+            current_node.next.prev = current_node
+        else:
+            self.tail = current_node
 
 
 my_linked_list = DoubleLinkedList()
 my_linked_list.insert_at_beginning(2)
 my_linked_list.insert_at_beginning(4)
+my_linked_list.insert_at_beginning(8)
+# my_linked_list.insert_at_beginning(4)
 # my_linked_list.insert_at_beginning(2)
 # my_linked_list.insert_at_beginning(3)
 # my_linked_list.insert_at_beginning(5)
@@ -142,6 +170,7 @@ my_linked_list.insert_at_beginning(4)
 # my_linked_list.insert_after_a_node(34, 70)
 # my_linked_list.insert_before_a_node(70, 450)
 # my_linked_list.insert_at_specific_index(18, 7)
-# my_linked_list.display_from_beginning()
-my_linked_list.remove_from_beginning()
-my_linked_list.display_from_end()
+my_linked_list.remove_at_a_specific_index(2)
+# my_linked_list.display_from_end()
+# my_linked_list.remove_from_beginning()
+my_linked_list.display_from_beginning()
