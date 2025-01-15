@@ -149,7 +149,6 @@ class DoubleLinkedList:
         if not current_node:
             print('Index out of range')
             return
-        print(current_node.item)
         current_node.next = current_node.next.next
         if current_node.next:
             current_node.next.prev = current_node
