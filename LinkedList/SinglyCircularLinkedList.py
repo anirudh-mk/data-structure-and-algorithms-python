@@ -32,3 +32,19 @@ class SinglyCircularLinkedList:
             current_node = current_node.next
         current_node.next = new_node
         new_node.next = self.head
+
+    def delete_at_beginning(self):
+        if not self.head:
+            print("Linked list is empty")
+            return
+
+        if self.head.next == self.head:
+            self.head = None
+            return
+
+        current_node = self.head
+        while current_node.next != self.head:
+            current_node = current_node.next
+
+        current_node.next = self.head.next
+        self.head = self.head.next
