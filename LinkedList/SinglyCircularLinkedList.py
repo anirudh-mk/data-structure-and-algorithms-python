@@ -24,7 +24,7 @@ class SinglyCircularLinkedList:
     def insert_at_end(self, data):
         new_node = Node(data)
         if not self.head:
-            self.head = self.head
+            self.head = new_node
             new_node.next = self.head
             return
         current_node = self.head
